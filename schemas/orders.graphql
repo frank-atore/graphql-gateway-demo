@@ -1,0 +1,8 @@
+# orders.graphql
+
+type Order {
+    id: Int!
+    userId: Int!
+    status: String!
+    total: Float!
+}

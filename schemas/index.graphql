@@ -1,0 +1,5 @@
+# index.graphql
+
+type Query {
+    _empty:String
+}

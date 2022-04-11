@@ -1,0 +1,34 @@
+# users.graphql
+
+type User {
+    id: Int!
+    firstName: String!
+    lastName: String!
+    orders: [Order]
+}
+
+type GenericError {
+  message: String!
+}
+
+type HTTPError {
+  message: String!
+  statusCode: Int!
+}
+
+union UserOrError = User | GenericError
+
+type UserPayload {
+    user:  User
+    error: GenericError
+}
+
+extend type Query {
+    users: [UserOrError]  # error would only appear for missing or wrong data
+    getUser(id: Int!): UserOrError
+}
+
+# extend type Query {
+#     users: [User]
+#     getUser(id: Int!): UserPayload
+# }
